@@ -25,15 +25,18 @@ Primeiro, certifique-se de que os arquivos de imagem estão presente no mesmo di
 ## Metodologia
 
 
-### K-Means Clusternig
+### K-Means Clusternig - Modelo não-supervisionado
 
-### Decision Tree
+Em nosso caso, K-Means será separado em K=4, pois queremos fazer subgrupos dentro dos grupos "cLabels" definidos pela tabela. Este metodo separa nossos dados em aglomerados de acordo com similaridades nos parâmetros dos dados após várias iterações. Primeiro os aglomerados serão definidos de acordo com a posição arbitrária dos centróides. Depois, a média das distâncias para cada aglomerado é calculada. Em seguida, os centróides são ajustados novamente até a média parar de variar.
 
+### Decision Tree - Modelo supervisionado
 
+A Árvores de Decisão irá utilizar os dados da amostra, de forma a separar os dados o máximo possível. Após cada separação feita, um novo parâmetro é utilizado para tal. Por este modelo ser supervisionado, o teste e treino foi separado em uma proporção de 70/30.
 
 
 ## Conclusão
 
+Por termos um número de dados razoavelmente grande (em torno de 6k)
 
 ## Referências
 Trevor Z. Dorn-Wallenstein et al 2021 ApJ 913 32
