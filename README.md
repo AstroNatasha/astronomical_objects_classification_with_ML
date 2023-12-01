@@ -2,13 +2,15 @@
 
 ## Resumo
 
-A intenção deste projeto é testar técnicas de machine learning de clusterização e classificação utilizando o catálogo fotométrico na região do optico e infravermelho J/ApJ/913/32/sample "Classifications from Gaia & WISE data (Dorn-Wallenstein+, 2021)". Este catálogo fo criado com um objetivo futuro de facilitar a identificação de estrelas massivas raras em observações no infravermelho e assim, utilizar de métodos estatísticos modernos para testar a evolução estelar massiva em ambientes novos. Uma vez que as observações espectroscópicas de alvos mais distantes podem ser inviabilizdas há a pretensão de determinar se os métodos de aprendizagem automática podem classificar estrelas massivas usando fotometria infravermelha de banda larga. O classificador Support Vector Machine classifica estrelas massivas como quentes, frias e de linha de emissão com alta precisão, rejeitando gigantes contaminantes de baixa massa. Utilizamos destas classificações para treinar nosso método de árvore de decisão. Note que:
+A intenção deste projeto é testar técnicas de machine learning de clusterização e classificação utilizando o catálogo fotométrico na região do optico e infravermelho J/ApJ/913/32/sample "Classifications from Gaia & WISE data (Dorn-Wallenstein+, 2021)". Este catálogo fo criado com um objetivo futuro de facilitar a identificação de estrelas massivas raras em observações no infravermelho e assim, utilizar de métodos estatísticos modernos para testar a evolução estelar massiva em ambientes novos. Uma vez que as observações espectroscópicas de alvos mais distantes podem ser inviabilizdas há a pretensão de determinar se os métodos de aprendizagem automática podem classificar estrelas massivas usando fotometria infravermelha de banda larga. O classificador Support Vector Machine classifica estrelas massivas como quentes, frias e de linha de emissão com alta precisão, rejeitando gigantes contaminantes de baixa massa. Utilizamos destas classificações para treinar nosso método de árvore de decisão.
 
 - Contaminant = estrelas C/S/gigantes e anãs amarelas (126 ocorrências)
 - Cool = RSGs e YSGs (1059 ocorrências)
 - EM = Emissão: estrelas WR, LBVs e estrelas OB[e] e OBAe (440 ocorrências)
 - Hot = todas as classes de estrelas OBA, excluindo OB[e] e OBAe (2309 ocorrências)
 - Unknown/Candidate = variáveis ​​que divergem e desconhecido/candidatos (2550 ocorrências)
+
+  Note que as estrelas consideradas Contaminants foram desconsideradas da tabela por seu número pequeno de ocorrências.
 
 ## Sobre o repositório
 
