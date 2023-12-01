@@ -1,4 +1,4 @@
-# Classificando objetos astronômicos utilizando técnicas de Machine Learning
+# Classificando estrelas utilizando técnicas de Machine Learning
 
 ## Resumo
 
