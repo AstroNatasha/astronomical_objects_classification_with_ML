@@ -39,7 +39,7 @@ Em nosso caso, K-Means será separado em K=4, pois queremos fazer subgrupos dent
 
 ### Decision Tree - Modelo supervisionado
 
-A Árvores de Decisão irá utilizar os dados da amostra, de forma a separar os dados o máximo possível. Após cada separação feita, um novo parâmetro é utilizado para tal. Por este modelo ser supervisionado, o teste e treino foi separado em uma proporção de 70/30.
+A Árvore de Decisão irá utilizar os dados da amostra, de forma a separar os dados o máximo possível. Após cada separação feita, um novo parâmetro é utilizado para tal. Por este modelo ser supervisionado, o teste e treino foi separado em uma proporção de 70/30.
 
 
 ## Conclusão
