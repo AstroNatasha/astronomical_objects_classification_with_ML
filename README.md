@@ -32,7 +32,7 @@ Clone this repository or download the 'k_means_clustering_and_decision_tree_obje
 
 First, ensure that the image files are present in the same directory as the Python file. The required libraries must be installed in your Python environment.
 
-## Metodologia
+## Revised Methodology
 
 
 ### K-Means Clustering - Unsupervised Model
