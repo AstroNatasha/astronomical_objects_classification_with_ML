@@ -1,22 +1,24 @@
-# Classificando estrelas utilizando técnicas de Machine Learning
+# Star Classification Using Machine Learning Techniques
 
-## Resumo
+## Abstract
 
-A intenção deste projeto é testar técnicas de machine learning de clusterização e classificação utilizando o catálogo fotométrico na região do optico e infravermelho J/ApJ/913/32/sample "Classifications from Gaia & WISE data (Dorn-Wallenstein+, 2021)". Este catálogo fo criado com um objetivo futuro de facilitar a identificação de estrelas massivas raras em observações no infravermelho e assim, utilizar de métodos estatísticos modernos para testar a evolução estelar massiva em ambientes novos. Uma vez que as observações espectroscópicas de alvos mais distantes podem ser inviabilizdas há a pretensão de determinar se os métodos de aprendizagem automática podem classificar estrelas massivas usando fotometria infravermelha de banda larga. O classificador Support Vector Machine classifica estrelas massivas como quentes, frias e de linha de emissão com alta precisão, rejeitando gigantes contaminantes de baixa massa. Utilizamos destas classificações para treinar nosso método de árvore de decisão.
+The purpose of this project is to explore machine learning techniques for clustering and classification using the photometric catalog in the optical and infrared region J/ApJ/913/32/sample, titled "Classifications from Gaia & WISE data (Dorn-Wallenstein+, 2021)." This catalog was created with the future goal of facilitating the identification of rare massive stars in infrared observations and employing modern statistical methods to investigate the evolution of massive stellar phenomena in new environments. Given the challenges posed by spectroscopic observations of more distant targets, there is an ambition to assess whether machine learning methods can effectively classify massive stars using broad-band infrared photometry. The Support Vector Machine classifier effectively categorizes massive stars as hot, cold, or emission-line, exhibiting high precision while rejecting low-mass contaminating giants. These classifications serve as training data for our decision tree method.
 
-- Contaminant = estrelas C/S/gigantes e anãs amarelas (126 ocorrências)
-- Cool = RSGs e YSGs (1059 ocorrências)
-- EM = Emissão: estrelas WR, LBVs e estrelas OB[e] e OBAe (440 ocorrências)
-- Hot = todas as classes de estrelas OBA, excluindo OB[e] e OBAe (2309 ocorrências)
-- Unknown/Candidate = variáveis ​​que divergem e desconhecido/candidatos (2550 ocorrências)
+- Contaminant = C/S/giant stars and yellow dwarfs (126 occurrences)
+- Cool = RSGs and YSGs (1059 occurrences)
+- EM = Emission: WR stars, LBVs, and OB[e] and OBAe stars (440 occurrences)
+- Hot = all OBA star classes, excluding OB[e] and OBAe (2309 occurrences)
+- Unknown/Candidate = divergent variables and unknown/candidates (2550 occurrences)
 
-  Note que as estrelas consideradas Contaminants foram desconsideradas da tabela por seu número pequeno de ocorrências.
+Note that stars classified as contaminants were omitted from the table due to their low occurrence.
 
-## Sobre o repositório
 
-- ‘k_means_clustering_and_decision_tree_objects_classification.ipynb’: Código em Python que realiza as classificações
+## About the Repository
 
-## Dependências
+- 'k_means_clustering_and_decision_tree_objects_classification.ipynb': Python code for performing the classifications
+- 'astronomical_objects_classification_and_prediction_with_ML.ipynb' : Improved version of the analysis, providing a more in-depth exploration of the correlations and employing a new approach.
+
+## Dependencies
 
 - numpy
 - matplotlib
@@ -24,27 +26,27 @@ A intenção deste projeto é testar técnicas de machine learning de clusteriza
 - astroquery
 - sklearn
 
-## Como usar o código
+## How to Use the Code
 
-Clone este repositório ou baixe o arquivo ‘k_means_clustering_and_decision_tree_objects_classification.ipynb’ para o seu ambiente de trabalho. Execute o código Python ‘k_means_clustering_and_decision_tree_objects_classification.ipynb’ em seu ambiente. Você pode fazer isso usando um ambiente Python de sua escolha, como Jupyter Notebook ou um ambiente de desenvolvimento integrado (IDE).
+Clone this repository or download the 'k_means_clustering_and_decision_tree_objects_classification.ipynb' file to your working environment. Execute the Python code 'k_means_clustering_and_decision_tree_objects_classification.ipynb' in your environment, using a Python environment of your choice, such as Jupyter Notebook or an integrated development environment (IDE).
 
-Primeiro, certifique-se de que os arquivos de imagem estão presente no mesmo diretório que o arquivo Python. As bibliotecas devem estar instaladas em seu ambiente Python.
+First, ensure that the image files are present in the same directory as the Python file. The required libraries must be installed in your Python environment.
 
 ## Metodologia
 
 
-### K-Means Clusternig - Modelo não-supervisionado
+### K-Means Clustering - Unsupervised Model
 
-Em nosso caso, K-Means será separado em K=4, pois queremos fazer subgrupos dentro dos grupos "cLabels" definidos pela tabela. Este metodo separa nossos dados em aglomerados de acordo com similaridades nos parâmetros dos dados após várias iterações. Primeiro os aglomerados serão definidos de acordo com a posição arbitrária dos centróides. Depois, a média das distâncias para cada aglomerado é calculada. Em seguida, os centróides são ajustados novamente até a média parar de variar.
+In our case, K-Means will be set to K=4, aiming to create subgroups within the "cLabels" groups defined by the table. This method separates our data into clusters based on similarities in data parameters after multiple iterations. Initially, clusters are defined based on the arbitrary position of centroids. Subsequently, the mean distances for each cluster are calculated, and centroids are readjusted until the mean stops varying.
 
-### Decision Tree - Modelo supervisionado
+### Decision Tree - Supervised Model
 
-A Árvore de Decisão irá utilizar os dados da amostra, de forma a separar os dados o máximo possível. Após cada separação feita, um novo parâmetro é utilizado para tal. Por este modelo ser supervisionado, o teste e treino foi separado em uma proporção de 70/30.
+The Decision Tree will use the sample data to separate the data as much as possible. After each separation, a new parameter is used for further refinement. As this model is supervised, the test and training data were split in a 70/30 ratio.
 
 
-## Conclusão
+## Conclusion
 
-O fato de termos um número de dados razoavelmente grande (em torno de 6k) neste catálogo possibilitou a aplicação das técnicas. Escolhi a evidente correlação entre a cor G-J com a magnitude da banda G para plotar a clusterização. A etapa de clusterização foi útil para ter alguns insights iniciais, assim como as estatísticas básicas da tabela. A separação de clusters foi um sucesso. Depois da primeira clusterização, uma tentativa para cada classificação de objetos (cLabels) foi realizada, afim de comparar seus posicionamentos e testar novas separações dentro de cada classificação. Já na etapa da árvore de decisão, houve um bom resultado, com precisões boas e obtendo poucas classificações falsas (falso positivo/falso negativo). A maior concentração de falsos ocorreu na classificação dos objetos considerados desconhecidos/candidatos, possivelmente por já não serem bem identificados nos próprios catálogos e pelo número baixo de amostras de dados presentes. Para estudos futuros, sugiro um estudo mais aprofundado sobre a relação entre os objetos desconhecidos e EM, uma vez que houve certa confusão ao classificar estes objetos. Além disso, as estrelas Contaminants podem afetar os resultados. Seria bom realizar o projeto uma outra vez, considerando-as.
+The relatively large dataset size (around 6k) in this catalog allowed for the application of these techniques. I chose the evident correlation between G-J color and G-band magnitude for plotting the clustering. The clustering step provided valuable initial insights, along with basic statistics from the table. Cluster separation was successful. After the initial clustering, an attempt for each object classification (cLabels) was made to compare their positions and test new separations within each classification. In the decision tree step, there was a good outcome with high precision and few false classifications (false positive/false negative). The highest concentration of false classifications occurred in the classification of objects considered unknown/candidates, possibly due to their ambiguous identification in catalogs and the low number of data samples available. For future studies, I suggest a more in-depth investigation into the relationship between unknown objects and EM, as there was some confusion in classifying these objects. Additionally, contaminants may impact results, warranting a reevaluation of the project considering them.
 
-## Referências
+## References
 Trevor Z. Dorn-Wallenstein et al 2021 ApJ 913 32
